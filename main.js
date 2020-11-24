@@ -1,17 +1,25 @@
 const poke_container = document.getElementById("poke_container");
-const pokemons_number = 150;
+// const pokemons_number = 150;
+const pokemonStore = []
+
+const PokemonCard = function (pokemon) {
+  // pokemon = each item of data
+  // const name = pokemon.name
+}
 
 const fetchPokemons = async () => {
-  for (let i = 1; i <= pokemons_number; i++) {
-    await getPokemon(i);
-  }
+  getPokemon(i);
 };
 
 const getPokemon = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const pokemon = await res.json();
-  createPokemonCard(pokemon);
+  // createPokemonCard(pokemon);
+
+  // Pass in the data to the class
+  const card = new PokemonCard(pokemon)
+  pokemonStore.push(card)
 };
 
 const createPokemonCard = (pokemon) => {
@@ -34,3 +42,18 @@ const createPokemonCard = (pokemon) => {
 };
 
 fetchPokemons();
+
+const Pokemon = function () {
+
+}
+
+
+
+/*
+
+  0) Do a single netwrok request for all of the pokemon cards
+  1) Fetch the pokemon cards and add them to an array.
+  2) Once this array has been populated, then loop through the array and add them to the DOM.
+  3) Create a Pokemon class and create a new class for each Pokemon.
+
+*/
